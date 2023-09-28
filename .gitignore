@@ -1,0 +1,23 @@
+# created by virtualenv automatically
+*.sqlite3
+*.db
+
+
+
+**/migrations/*.py
+**/migrations/*.pyc
+**/__pycache__
+
+venv/
+
+
+/static/
+/media/
+
+
+
+*.log
+
+*.pyc
+*.pyo
+__pycache__/
