@@ -18,3 +18,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+    
+# es serialaizeri imitom gvchirdeba rom registraciis serialaizerit ar gamodis. vfiqrob unikalurobis gamo
+class UserLoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField(write_only=True)
