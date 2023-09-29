@@ -9,6 +9,10 @@ from rest_framework.response import Response
 from .serializers import UserRegistrationSerializer, UserLoginSerializer
 
 class UserRegistratinView(generics.CreateAPIView):
+    # basic plan 
+    # we need POST reques
+    # serialize data
+    #save and status code
     serializer_class = UserRegistrationSerializer
 
     def post(self, request, *args, **kwargs):
@@ -22,6 +26,10 @@ class UserRegistratinView(generics.CreateAPIView):
 
 
 class UserLoginView(APIView):
+    # how to do?
+    # take data from serializer and validate it
+    #authenticate if it is valid
+    # use login function for login   and return status codes 
     def post(self, request):
         serializer = UserLoginSerializer(data=request.data)
 
@@ -42,6 +50,7 @@ class UserLoginView(APIView):
 
 
 class UserLogoutView(APIView):
+    # only logout :)
     def get(self, request):
          logout(request)
 

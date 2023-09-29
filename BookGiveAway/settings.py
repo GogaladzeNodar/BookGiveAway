@@ -83,9 +83,16 @@ DATABASES = {
     }
 }
 
-AUTHENTICATION_CLASSES = (
-    'rest_framework_simplejwt.authentication.JWTAuthentication',
-)
+# AUTHENTICATION_CLASSES = (
+#      'rest_framework_simplejwt.authentication.JWTAuthentication',
+# )
+REST_FRAMEWORK = {
+   'DEFAULT_AUTHENTICATION_CLASSES': [
+      #'rest_framework_simplejwt.authentication.JWTAuthentication',
+      'rest_framework.authentication.SessionAuthentication',
+   ],
+}
+
 
 AUTH_USER_MODEL = 'user.CustomUser'
 
