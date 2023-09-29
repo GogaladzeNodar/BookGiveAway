@@ -2,15 +2,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Book, Request
-from .serializers import BookSerializer, RequestSerializer
+from book.models import Book, Request
+from book.serializers import BookSerializer, RequestSerializer
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 
 # Create your views here.
 # First of all, "ra aris Sheni gen gegmaa"
 # CRUD for Books, 
-# createrequest view and Updaterequest view chuqebisTvis
+# createrequest view and Updaterequest view chuqebisTvis   --> es sxva failshi jobia <--
 
 
 class BookCreateView(APIView):
@@ -58,4 +58,3 @@ class BookDetailView(APIView):
         book = Book.objects.get(pk=pk)
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-

@@ -23,9 +23,12 @@ class Book(models.Model):
 
 class Request(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    requester = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    is_accepted = models.BooleanField(default=True)
+    requester = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='requested_books', on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, related_name='owned_books', on_delete= models.CASCADE)
+    status = models.CharField(max_length=20, null=True, choices=[
+        ('pending', 'Pending'),
+        ('accepted', 'Accepted'),
+        ('rejected', 'rejected'),
 
-    def __str__(self):
-        return self.requester
+    ])
 

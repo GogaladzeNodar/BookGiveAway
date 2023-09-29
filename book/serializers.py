@@ -3,6 +3,7 @@ from django.conf import settings
 from .models import Book, Request
 
 
+
 class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -13,4 +14,4 @@ class RequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Request
-        fields = "__all__"
+        fields = '__all__'
