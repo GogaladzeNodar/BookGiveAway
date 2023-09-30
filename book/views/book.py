@@ -1,10 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
-from book.models import Book, Request
-from book.serializers import BookSerializer, RequestSerializer
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from django_filters.rest_framework import DjangoFilterBackend
+from book.filters import BookFilter
+from book.models import Book
+from book.serializers import BookSerializer
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
@@ -33,7 +34,9 @@ class BookListView(APIView):
     #serialize, save, Response
     def get(self, request):
         books = Book.objects.all()
-        serializer = BookSerializer(books, many=True)
+        book_filter = BookFilter(request.GET, queryset=books )
+        filtered_queryset = book_filter.qs
+        serializer = BookSerializer(filtered_queryset, many=True)
         return Response(serializer.data)
     
 
