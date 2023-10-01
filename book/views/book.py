@@ -32,12 +32,16 @@ class BookListView(APIView):
     # request GET
     # all book
     #serialize, save, Response
-    def get(self, request):
-        books = Book.objects.all()
-        book_filter = BookFilter(request.GET, queryset=books )
-        filtered_queryset = book_filter.qs
-        serializer = BookSerializer(filtered_queryset, many=True)
-        return Response(serializer.data)
+    # def get(self, request):
+    #     books = Book.objects.all()
+    #     book_filter = BookFilter(request.GET, queryset=books )
+    #     filtered_queryset = book_filter.qs
+    #     serializer = BookSerializer(filtered_queryset, many=True)
+    #     return Response(serializer.data)
+    queryser = Book.objects.all()
+    serializer_class = BookSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = BookFilter
     
 
 class BookDetailView(APIView):

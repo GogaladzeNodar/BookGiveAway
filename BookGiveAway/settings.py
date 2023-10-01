@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'user',
     'book',
     'django_filters',
+    'drf-yasg',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BookGiveAway.wsgi.application'
 
+SWAGGER_SETTINGS = {
+    'DEFAULT_INFO': 'your_project.urls.swagger_info',
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -98,6 +103,9 @@ REST_FRAMEWORK = {
 
 AUTH_USER_MODEL = 'user.CustomUser'
 
+SWAGGER_SETTINGS = {
+    'DEFAULT_INFO': 'your_project.urls.swagger_info',
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
