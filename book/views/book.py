@@ -1,4 +1,5 @@
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
 from django_filters.rest_framework import DjangoFilterBackend
@@ -28,7 +29,7 @@ class BookCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-class BookListView(APIView):
+class BookListView(ListAPIView):
     # request GET
     # all book
     #serialize, save, Response
@@ -38,7 +39,7 @@ class BookListView(APIView):
     #     filtered_queryset = book_filter.qs
     #     serializer = BookSerializer(filtered_queryset, many=True)
     #     return Response(serializer.data)
-    queryser = Book.objects.all()
+    queryset = Book.objects.all()
     serializer_class = BookSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = BookFilter
